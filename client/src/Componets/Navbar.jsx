@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,10 +10,25 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import axios from 'axios';
+import { useState,useEffect } from 'react';
+import "./flash.css"
 import './Navbar.css';
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [flashMessage, setFlashMessage] = useState(null);
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    let timer;
+    if (flashMessage) {
+      timer = setTimeout(() => {
+        setFlashMessage(null); 
+      }, 2000);
+    }
+    return () => clearTimeout(timer); 
+  }, [flashMessage]);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -23,7 +38,17 @@ function Navbar() {
     setAnchorElNav(null);
   };
 
+  const handleLogout = () => {
+    axios.post("http://localhost:8080/logout", {}, { withCredentials: true })
+      .then(response => {
+        setFlashMessage({ type: 'success', text: 'Logging out...' });
+      })
+      .catch(err => {
+        setFlashMessage({ type: 'error', text: 'Logout failed, please try again' });
+      });
+  };
   return (
+    <div>
     <AppBar position="static" className='navbar'>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -63,14 +88,12 @@ function Navbar() {
               </Link>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-              <Link to="/login">
+              <Link to="/login" >
                   <Typography textAlign="center">LogIn</Typography>
               </Link>
               </MenuItem>
-              <MenuItem>
-              <Link to="/logout">
-                <Typography textAlign="center">Logout</Typography>
-              </Link>
+              <MenuItem >
+                <Typography textAlign="center" onClick={handleLogout}>Logout</Typography>
               </MenuItem>
             </Menu>
             <Typography variant="h3" className='title'>
@@ -103,8 +126,7 @@ function Navbar() {
               LogIn
             </Button>
             <Button
-              component={Link}
-              to="/logout"
+              onClick={handleLogout}
               className='btns'
               sx={{ my: 2, color: 'black', display: 'block' }}
             >
@@ -114,6 +136,12 @@ function Navbar() {
         </Toolbar>
       </Container>
     </AppBar>
+    {flashMessage && (
+        <div className={`flash-message ${flashMessage.type === 'success' ? 'flash-success' : 'flash-error'}`}>
+          {flashMessage.text}
+        </div>
+      )}
+    </div>
   );
 }
 

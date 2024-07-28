@@ -2,12 +2,14 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import './comman.css';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from "axios";
+import { Link ,useNavigate} from 'react-router-dom';
+import axios from 'axios';
+import FlashMessage from 'react-flash-message'; // Import if needed
+import './flash.css'; // Import the CSS file
 
-export default function SignUp() {
+export default function Login() {
     const [formData, setFormData] = useState({ username: "", password: "" });
-
+    const [flashMessage, setFlashMessage] = useState(null);
     const navigate = useNavigate();
     const handleChange = (event) => {
         setFormData((currData) => ({
@@ -18,22 +20,31 @@ export default function SignUp() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(formData);
-        setFormData({ username: "", password: "" });
-    
         axios.post("http://localhost:8080/login", formData, { withCredentials: true })
-            .then(result => {
-                console.log(result);
-            })
-            .catch(err => {
-                console.error(err);
-                navigate("/login");
-            });
+        .then(result => {
+          setFlashMessage({ type: 'success', text: 'Login successful' });
+          setTimeout(() => navigate('/'), 2000); // Redirect after 2 seconds
+        })
+        .catch(err => {
+          console.log(err);
+          setFlashMessage({ type: 'error', text: 'Incorrect username or password' });
+        });
     };
 
     return (
         <div className="SignForm">
             <form onSubmit={handleSubmit}>
+            {flashMessage && (
+        <FlashMessage duration={2000} persistOnHover={true}>
+          <div
+            className={`flash-message ${
+              flashMessage.type === 'success' ? 'flash-success' : 'flash-error'
+            }`}
+          >
+            {flashMessage.text}
+          </div>
+        </FlashMessage>
+      )}
                 
                 <div className='Title'>
                     <h4>Log In</h4>

@@ -1,0 +1,22 @@
+.flash-message {
+   display: flex;
+   justify-content: center;
+    padding: 10px;
+    margin: 10px 0;
+    height: 3rem;
+    border-radius: 5px;
+    font-size: 25px;
+    background-color: #333;
+    text-align: center;
+  }
+  
+  .flash-success {
+    background-color: #b3f8b5;
+    color: #054608; /* Green for success */
+  }
+  
+  .flash-error {
+    background-color: #f2918a;
+    color: #7e0808;
+  }
+  
