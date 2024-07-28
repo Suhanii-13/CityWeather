@@ -1,0 +1,28 @@
+  .navbar {
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+    box-shadow: 11px 10px 10px black !important;
+  }
+  
+  .btns
+  {
+    font-size: large !important;
+    margin-left: 1rem !important;
+    margin-right: -1rem !important;
+   } 
+
+
+   .title
+   {
+      display: flex !important;
+      text-align: center !important;
+      flex-grow: 1;
+      letter-spacing:0.5rem !important;
+      color:#d4c18f !important;
+      margin-left: 13rem !important;
+      text-shadow: 1px 1px 1px black !important;
+      font-size: 2.6rem !important;
+      justify-content: center !important;
+    }
+  

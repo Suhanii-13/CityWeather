@@ -1,0 +1,64 @@
+.box {
+    display: flex;
+    margin-top: 1rem;
+    margin-left: 5rem;
+    height: 5rem;
+    align-items: center; 
+}
+
+.inputFiled {
+    height: 2.5rem;
+    width: 10rem;
+    background-color: aliceblue;
+    border: 1px solid black;
+    box-shadow: 4px 5px 3px black;
+    border-radius: 10px;
+}
+
+.addbtn {
+    color: black;
+    height: 2rem;
+    width: 3rem;
+    margin-left: 1rem; 
+    border-radius: 30px;
+    background-color: aliceblue;
+    border: 1px solid black;
+    box-shadow: 3px 3px 3px black;
+}
+
+
+
+
+.cityList {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping to the next line if necessary */
+    gap: 0.5rem; /* Space between buttons */
+}
+
+.cityList .cityBtn:first-child {
+    margin-left: 2rem;
+}
+
+.cityBtn {
+    background-color: aliceblue;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.cityBtn:hover , .deletebtn:hover
+{
+    box-shadow: 1px 1px 10px 3px rgb(245, 242, 242);
+}
+
+
+.deletebtn
+{
+    height: 2rem;
+    width: 3rem;
+    margin-left: 1rem; 
+    border-radius: 30px;
+    border: none;
+     background-color: #d4c18f;
+}

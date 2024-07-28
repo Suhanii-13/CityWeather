@@ -1,0 +1,29 @@
+.InfoCard {
+    display: flex;
+    margin-top: 5rem;
+    margin-left: 2rem;
+    width: 20rem; 
+    height: 20rem;
+    border-radius: 5px !important;
+    border: 2px solid black !important ;
+    box-shadow: 11px 10px 1px black !important;
+    transition: 1s;
+}
+
+.InfoCard:hover {
+    box-shadow: 2px 8px 18px black !important;
+}
+
+.Info {
+    background-color: rgb(255, 253, 253);
+    width: 100%;
+    text-align: center;
+}
+
+.font-size {
+    font-size: 1.2rem !important;
+}
+
+.icons {
+    margin-left: 1rem;
+}

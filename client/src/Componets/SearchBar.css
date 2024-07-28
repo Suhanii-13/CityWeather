@@ -1,0 +1,28 @@
+.searchBar
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+}
+
+.Searchbutton
+{
+    margin-left: 1.2rem;
+    color: black !important;
+    height: 4rem;
+    width: 10rem;
+    margin-left: 1.2rem !important;
+    margin-top: 0.3rem !important;
+    background-color: aliceblue !important;
+    border: 1px solid black !important;
+    box-shadow: 11px 10px 10px black !important;
+}
+
+.SearchCity
+{
+    height: 3rem;
+    width: 25rem;
+    background-color: aliceblue;
+    border: 1px solid black !important;
+    box-shadow: 7px 8px 10px black !important;
+}
