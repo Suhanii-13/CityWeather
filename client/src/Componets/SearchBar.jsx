@@ -1,9 +1,5 @@
 import './SearchBar.css'
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { useState } from 'react';
-import { useDispatch} from 'react-redux';
-import {fetchData} from '../features/weather/weatherSlice'
+import { TextField, Button, useState, useDispatch, fetchData } from './import';
 
 export default  function SearchBar ()
 {

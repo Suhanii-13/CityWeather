@@ -1,11 +1,5 @@
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { useState } from 'react';
-import './comman.css';
-import { Link ,useNavigate} from 'react-router-dom';
-import axios from 'axios';
-import FlashMessage from 'react-flash-message'; // Import if needed
-import './flash.css'; // Import the CSS file
+import { TextField, Button, useState, Link, useNavigate, axios, FlashMessage } from './import';
+import './flash.css'; 
 
 export default function Login() {
     const [formData, setFormData] = useState({ username: "", password: "" });
@@ -20,6 +14,7 @@ export default function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setflashMessage(null);
         axios.post("http://localhost:8080/login", formData, { withCredentials: true })
         .then(result => {
           setFlashMessage({ type: 'success', text: 'Login successful' });

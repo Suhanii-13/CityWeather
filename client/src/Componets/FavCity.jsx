@@ -1,8 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchData } from '../features/weather/weatherSlice';
-import FlashMessage from 'react-flash-message'; // Import if needed
-import axios from 'axios';
+import { useState, useEffect ,useDispatch ,fetchData,FlashMessage,axios} from './import';
 import "./FavCity.css";
 
 export default function Favcity() {
@@ -23,18 +19,20 @@ export default function Favcity() {
   };
 
   const handleAdd = () => {
-    if (city.trim() !== "" && !cities.includes(city)) {
-        axios.post('http://localhost:8080/addcity', { city }, { withCredentials: true })
-          .then(response => {
-            setCities([...cities, city]);
-            setCity("");
-          })
-          .catch(err=>{
-            console.log(err)
-            setFlashMessage({ type: 'error', text: 'plese sing in' });
-          });
-      }
-    }
+    if (city.trim() === "" || cities.includes(city)) return;
+  
+    const newCities = [...cities, city];
+    setCities(newCities);
+    setCity("");
+  
+    axios.post('http://localhost:8080/addcity', { city }, { withCredentials: true })
+      .catch(err => {
+        console.error(err);
+        alert("Please register to use this feature.")
+        setCities(cities);
+      });
+  }
+  
 
   const handleCityClick = (city) => {
     if (!fetchedCities.includes(city)) {
@@ -61,7 +59,7 @@ export default function Favcity() {
     <div className="box">
       <input 
         placeholder="Add your city" 
-        className='inputFiled'
+        className='inputField'
         value={city} 
         onChange={handleChange}
       />

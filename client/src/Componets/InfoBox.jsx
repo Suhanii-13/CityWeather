@@ -1,6 +1,4 @@
-import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import { Grid, Card, CardContent } from '@mui/material';
+import { React, Typography, Grid, Card, CardContent } from './import';
 import "./InfoBox.css";
 
 const lowTempIcon = <i className="fa-solid fa-temperature-low icons"></i>;

@@ -1,24 +1,10 @@
-import * as React from 'react';
-import { Link,useNavigate } from 'react-router-dom';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import axios from 'axios';
-import { useState,useEffect } from 'react';
+import { React, Link,AppBar, Box, Toolbar, IconButton, Typography, Menu, MenuIcon, Container, Button, MenuItem, axios, useState, useEffect } from './import';
 import "./flash.css"
 import './Navbar.css';
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [flashMessage, setFlashMessage] = useState(null);
-  const navigate = useNavigate();
   
   useEffect(() => {
     let timer;
@@ -39,12 +25,13 @@ function Navbar() {
   };
 
   const handleLogout = () => {
+    setflashMessage(null);
     axios.post("http://localhost:8080/logout", {}, { withCredentials: true })
       .then(response => {
-        setFlashMessage({ type: 'success', text: 'Logging out...' });
+        window.location.reload(); 
       })
       .catch(err => {
-        setFlashMessage({ type: 'error', text: 'Logout failed, please try again' });
+        setFlashMessage({ type: 'error', text:"Registration not found. Please register" });
       });
   };
   return (

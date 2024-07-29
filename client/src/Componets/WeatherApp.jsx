@@ -1,9 +1,6 @@
-import SearchBar from './SearchBar.jsx';
-import { useSelector } from 'react-redux';
-import InfoBox from './InfoBox.jsx';
-import "./WeatherApp.css"
-import Navbar from './Navbar.jsx';
-import FavCity from './FavCity.jsx';
+import { SearchBar, InfoBox, Navbar, FavCity,useSelector } from './import';
+import './WeatherApp.css';
+
 
 export default function WeatherApp() {
   const weatherInfo = useSelector((state) => state.weatherApp.weatherInfo);

@@ -1,13 +1,6 @@
-import React, { useState } from 'react';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { useNavigate } from 'react-router-dom';
-import { Link} from 'react-router-dom';
-import axios from "axios"
-import FlashMessage from 'react-flash-message';
+import { React, useState, TextField, Button, useNavigate, Link, axios, FlashMessage } from './import';
 import "./flash.css"
 import './comman.css';
-
 
 export default function SignUp() {
     const [formData, setFormData] = useState({ username: "", password: "" });
@@ -23,6 +16,7 @@ export default function SignUp() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setflashMessage(null);
          axios.post("http://localhost:8080/signup" , formData , {withCredentials:true})
            .then(result =>{
             console.log(result);
@@ -33,8 +27,6 @@ export default function SignUp() {
             console.log(err);
             setflashMessage({type:"error" , text:"Username alredy exists"});
            });
-        
-        // setFormData({ username: "", password: "" });
     };
 
     return (
