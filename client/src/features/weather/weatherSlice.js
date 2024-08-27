@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const API_KEY = import.meta.env.VITE_API_KEY;
+const API_KEY =import.meta.env.VITE_API_KEY;
 const API_URL = import.meta.env.VITE_URL;
+
 export const fetchData = createAsyncThunk(
     'weatherApp/fetchData',
     async (city) => {

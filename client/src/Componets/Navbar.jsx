@@ -10,7 +10,7 @@ function Navbar() {
     let timer;
     if (flashMessage) {
       timer = setTimeout(() => {
-        setFlashMessage(null); 
+        setFlashMessage(null);
       }, 2000);
     }
     return () => clearTimeout(timer); 
@@ -25,7 +25,7 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    setflashMessage(null);
+    // setflashMessage(null);
     axios.post("http://localhost:8080/logout", {}, { withCredentials: true })
       .then(response => {
         window.location.reload(); 
@@ -39,7 +39,7 @@ function Navbar() {
     <AppBar position="static" className='navbar'>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* Mobile Menu Button */}
+          {/* Mobile XMenu Button */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"

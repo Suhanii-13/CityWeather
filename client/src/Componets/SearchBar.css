@@ -26,3 +26,28 @@
     border: 1px solid black !important;
     box-shadow: 7px 8px 10px black !important;
 }
+
+@media screen and (max-width:597px) {
+    .Searchbutton{
+        color: black !important;
+        height: 2rem;
+        width: 5rem;
+        margin-left: 1.8rem !important;
+        margin-top: 0.4rem !important;
+    }
+}
+
+@media screen and (max-width:526px) {
+    .Searchbutton{
+        color: black !important;
+        height: 2rem;
+        width: 5rem;
+        margin-left:9.6rem !important;
+        margin-top: 1rem !important;
+    }
+
+    .searchBar
+   {
+      margin-left: 3.5rem !important;
+   }
+}

@@ -14,7 +14,7 @@ export default function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setflashMessage(null);
+        // setflashMessage(null);
         axios.post("http://localhost:8080/login", formData, { withCredentials: true })
         .then(result => {
           setFlashMessage({ type: 'success', text: 'Login successful' });

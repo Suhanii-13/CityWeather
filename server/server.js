@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.use(session({
-  secret: process.env.SECRET_KEY, 
+  secret:process.env.SECRET_KEY, 
   resave: false, 
   saveUninitialized: false,
   cookie:
@@ -41,8 +41,8 @@ app.use(passport.session());
 
 
 app.use(cors({
-    origin:process.env.CLIENT_URL, 
-    credentials: true,
+  origin:process.env.CLIENT_URL,
+  credentials: true,
   }));
 
 
